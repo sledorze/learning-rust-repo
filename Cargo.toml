@@ -1,0 +1,25 @@
+[package]
+name = "axum-tuto"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = { version = "0.6.20", features = ["macros"] }
+tokio = { version = "1.32.0", features = ["full"] }
+
+serde ={ version = "1.0.130", features = ["derive"] }
+serde_json = { version = "1.0.68", features = ["raw_value"] }
+serde_with = "3.3.0"
+
+tower-http = { version = "0.4.3", features = ["fs"] }
+tower-cookies = "0.9.0"
+lazy-regex = "3.0.1"
+async-trait = "0.1.73"
+strum_macros = "0.25.2"
+uuid ={ version = "1.4.1", features = ["fast-rng", "v4"] }
+
+[dev-dependencies]
+anyhow = "1"
+httpc-test = "0.1.5"
