@@ -1,4 +1,4 @@
-use crate::{ctx::Ctx, Error, Result};
+use crate::{ctx::Ctx, Result};
 use axum::{
     extract::{FromRef, Path, State},
     routing::{delete, post},

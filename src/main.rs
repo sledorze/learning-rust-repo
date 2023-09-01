@@ -70,10 +70,10 @@ async fn main_response_mapper(
 
     let error_response = client_status_error
         .as_ref()
-        .map(|(status_code, client_Error)| {
+        .map(|(status_code, client_error)| {
             let client_error_body = serde_json::json!({
                 "error": {
-                    "type": client_Error.as_ref(),
+                    "type": client_error.as_ref(),
                     "req_uuid": uuid,
                 }
             });
@@ -120,12 +120,12 @@ async fn handler_hello(Query(params): Query<HelloParams>) -> impl IntoResponse {
     println!("->> {:<12} - handler_hello - {params:?} - ", "HANDLER");
 
     let name = params.name.as_deref().unwrap_or("default name");
-    return Html(format!("Hello, <strong>{name}</strong>"));
+    Html(format!("Hello, <strong>{name}</strong>"))
 }
 
 async fn handler_hello2(Path(name): Path<String>) -> impl IntoResponse {
     println!("->> {:<12} - handler_hello2< - {name:?} - ", "HANDLER");
 
     // let name = params.name.as_deref().unwrap_or("default name");
-    return Html(format!("Hello, <strong>{name}</strong>"));
+    Html(format!("Hello, <strong>{name}</strong>"))
 }

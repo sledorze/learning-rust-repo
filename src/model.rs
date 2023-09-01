@@ -1,4 +1,4 @@
-use crate::{ctx::Ctx, error, Error, Result};
+use crate::{ctx::Ctx, error, Result};
 use serde::{Deserialize, Serialize};
 use std::sync::{Arc, Mutex};
 
@@ -47,15 +47,15 @@ impl ModelController {
 
         store.push(Some(ticket.clone()));
 
-        return Ok(ticket);
+        Ok(ticket)
     }
 
-    pub async fn list_tickets(&self, ctx: Ctx) -> Result<Vec<Ticket>> {
-        let mut store = self.tickets_store.lock().unwrap();
+    pub async fn list_tickets(&self, _ctx: Ctx) -> Result<Vec<Ticket>> {
+        let store = self.tickets_store.lock().unwrap();
         Ok(store.iter().filter_map(|t| t.clone()).collect::<Vec<_>>())
     }
 
-    pub async fn delete_ticket(&self, ctx: Ctx, id: u64) -> Result<Ticket> {
+    pub async fn delete_ticket(&self, _ctx: Ctx, id: u64) -> Result<Ticket> {
         let mut store = self.tickets_store.lock().unwrap();
         let ticket = store.get_mut(id as usize).and_then(|t| t.take());
 

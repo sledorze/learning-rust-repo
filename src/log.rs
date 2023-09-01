@@ -33,7 +33,7 @@ pub async fn log_request(
         req_path: uri.to_string(),
         timestamp: timestamp.to_string(),
         user_id: ctx.map(|ctx| ctx.user_id()),
-        uuid: uuid.to_string(),
+        uuid,
     };
 
     // log_line

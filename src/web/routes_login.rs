@@ -21,11 +21,11 @@ async fn api_login(cookies: Cookies, payload: Json<LoginPayload>) -> Result<Json
     // TODO: Set Cookies
 
     // Create a success response
-    return Ok(Json(json!({
+    Ok(Json(json!({
         "result": {
             "success": true
         }
-    })));
+    })))
 }
 
 #[derive(Debug, serde::Deserialize)]

@@ -3,7 +3,6 @@ use axum::http::request::Parts;
 use axum::http::Request;
 use axum::middleware::Next;
 use axum::response::Response;
-use axum::RequestPartsExt;
 use lazy_regex::regex_captures;
 use tower_cookies::{Cookie, Cookies};
 
